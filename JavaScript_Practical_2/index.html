@@ -1,0 +1,332 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background: white;
+            color: #222;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-box {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-box h2,
+        .result-box h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin-top: 8px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: inline-block;
+            font-weight: normal;
+            margin-right: 20px;
+        }
+
+        .radio-group input,
+        .checkbox-group input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 11px 25px;
+            background: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .result-box {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 25px;
+            display: none;
+        }
+
+        .result-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            width: 180px;
+            font-weight: bold;
+        }
+
+        .result-value {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            color: #666;
+        }
+
+        @media print {
+            body {
+                padding: 15px;
+            }
+
+            button {
+                display: none;
+            }
+
+            .form-box {
+                display: none;
+            }
+
+            .result-box {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Registration Form</h1>
+    <p class="subtitle">Web Application Development Practical</p>
+
+    <div class="form-box">
+
+        <h2>Enter Student Details</h2>
+
+        <form id="studentForm">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+
+            <label for="enrollment">Enrollment Number</label>
+            <input type="text" id="enrollment" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" required>
+
+            <label for="semester">Semester</label>
+            <select id="semester" required>
+                <option value="">Select Semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+                <option value="7">Semester 7</option>
+                <option value="8">Semester 8</option>
+            </select>
+
+            <label>Gender</label>
+
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="gender" value="Male" required>
+                    Male
+                </label>
+
+                <label>
+                    <input type="radio" name="gender" value="Female">
+                    Female
+                </label>
+
+                <label>
+                    <input type="radio" name="gender" value="Other">
+                    Other
+                </label>
+            </div>
+
+            <label for="branch">Branch</label>
+            <select id="branch" required>
+                <option value="">Select Branch</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics and Communication">Electronics and Communication</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+            </select>
+
+            <label for="address">Address</label>
+            <textarea id="address" required></textarea>
+
+            <button type="submit">Submit Form</button>
+
+        </form>
+
+    </div>
+
+
+    <div class="result-box" id="resultBox">
+
+        <h2>Submitted Student Details</h2>
+
+        <div class="result-row">
+            <div class="result-label">Full Name</div>
+            <div class="result-value" id="displayName"></div>
+        </div>
+
+        <div class="result-row">
+            <div class="result-label">Enrollment Number</div>
+            <div class="result-value" id="displayEnrollment"></div>
+        </div>
+
+        <div class="result-row">
+            <div class="result-label">Email</div>
+            <div class="result-value" id="displayEmail"></div>
+        </div>
+
+        <div class="result-row">
+            <div class="result-label">Mobile Number</div>
+            <div class="result-value" id="displayMobile"></div>
+        </div>
+
+        <div class="result-row">
+            <div class="result-label">Semester</div>
+            <div class="result-value" id="displaySemester"></div>
+        </div>
+
+        <div class="result-row">
+            <div class="result-label">Gender</div>
+            <div class="result-value" id="displayGender"></div>
+        </div>
+
+        <div class="result-row">
+            <div class="result-label">Branch</div>
+            <div class="result-value" id="displayBranch"></div>
+        </div>
+
+        <div class="result-row">
+            <div class="result-label">Address</div>
+            <div class="result-value" id="displayAddress"></div>
+        </div>
+
+    </div>
+
+
+    <footer>
+        GTU WAD Practical - HTML Form and JavaScript
+    </footer>
+
+</div>
+
+
+<script>
+
+    document.getElementById("studentForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let enrollment = document.getElementById("enrollment").value;
+        let email = document.getElementById("email").value;
+        let mobile = document.getElementById("mobile").value;
+        let semester = document.getElementById("semester").value;
+        let branch = document.getElementById("branch").value;
+        let address = document.getElementById("address").value;
+
+        let gender = document.querySelector(
+            'input[name="gender"]:checked'
+        ).value;
+
+        document.getElementById("displayName").textContent = name;
+        document.getElementById("displayEnrollment").textContent = enrollment;
+        document.getElementById("displayEmail").textContent = email;
+        document.getElementById("displayMobile").textContent = mobile;
+        document.getElementById("displaySemester").textContent =
+            "Semester " + semester;
+        document.getElementById("displayGender").textContent = gender;
+        document.getElementById("displayBranch").textContent = branch;
+        document.getElementById("displayAddress").textContent = address;
+
+        document.getElementById("resultBox").style.display = "block";
+
+        document.getElementById("resultBox").scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```
