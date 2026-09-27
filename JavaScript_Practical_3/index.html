@@ -1,0 +1,194 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background and Foreground Color</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background: white;
+            color: black;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid black;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        .box {
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #888;
+            border-radius: 5px;
+        }
+
+        .demo {
+            padding: 25px;
+            border: 1px solid currentColor;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid currentColor;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid currentColor;
+        }
+
+        @media print {
+            select {
+                display: none;
+            }
+
+            .box {
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body id="page">
+
+<div class="container">
+
+    <header>
+        <h1>Background and Foreground Color Changer</h1>
+        <p>Web Application Development Practical</p>
+    </header>
+
+    <div class="box">
+
+        <label for="backgroundColor">
+            Select Background Color
+        </label>
+
+        <select id="backgroundColor" onchange="changeBackground()">
+            <option value="white">White</option>
+            <option value="lightblue">Light Blue</option>
+            <option value="lightgreen">Light Green</option>
+            <option value="lightyellow">Light Yellow</option>
+            <option value="lightpink">Light Pink</option>
+            <option value="lightgray">Light Gray</option>
+        </select>
+
+
+        <label for="foregroundColor">
+            Select Foreground Color
+        </label>
+
+        <select id="foregroundColor" onchange="changeForeground()">
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="red">Red</option>
+            <option value="purple">Purple</option>
+            <option value="brown">Brown</option>
+        </select>
+
+    </div>
+
+
+    <div class="demo">
+
+        <h2>Color Demonstration</h2>
+
+        <p>
+            This page demonstrates how JavaScript can be used
+            to change the background and foreground colors.
+        </p>
+
+        <p>
+            Select different colors from the dropdown menus
+            to change the appearance of this page.
+        </p>
+
+        <div class="status" id="status">
+            Background: White | Foreground: Black
+        </div>
+
+    </div>
+
+
+    <footer>
+        GTU WAD Practical - JavaScript
+    </footer>
+
+</div>
+
+
+<script>
+
+    function changeBackground() {
+
+        let color = document.getElementById("backgroundColor").value;
+
+        document.bgColor = color;
+
+        document.getElementById("page").style.backgroundColor = color;
+
+        document.getElementById("status").innerHTML =
+            "Background: " + color +
+            " | Foreground: " +
+            document.getElementById("foregroundColor").value;
+    }
+
+
+    function changeForeground() {
+
+        let color = document.getElementById("foregroundColor").value;
+
+        document.fgColor = color;
+
+        document.getElementById("page").style.color = color;
+
+        document.getElementById("status").innerHTML =
+            "Background: " +
+            document.getElementById("backgroundColor").value +
+            " | Foreground: " + color;
+    }
+
+</script>
+
+</body>
+</html>
+```
