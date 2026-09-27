@@ -1,0 +1,381 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practical</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background: white;
+            color: #222;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 0;
+            color: #555;
+        }
+
+        .section {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            line-height: 1.8;
+        }
+
+        ul {
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+            color: #666;
+        }
+
+        @media print {
+            body {
+                padding: 15px;
+            }
+
+            button {
+                display: none;
+            }
+
+            input {
+                border: none;
+                border-bottom: 1px solid #999;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>JavaScript Demonstration</h1>
+        <p>Web Application Development Practical</p>
+    </header>
+
+    <div class="section">
+        <h2>1. Declare and Assign Variables</h2>
+
+        <label>Enter Your Name</label>
+        <input type="text" id="name">
+
+        <label>Enter Your Semester</label>
+        <input type="number" id="semester">
+
+        <button onclick="displayVariables()">Display Variables</button>
+
+        <div class="output" id="variableOutput"></div>
+    </div>
+
+
+    <div class="section">
+        <h2>2. Operators and Expressions</h2>
+
+        <label>Enter First Number</label>
+        <input type="number" id="num1">
+
+        <label>Enter Second Number</label>
+        <input type="number" id="num2">
+
+        <button onclick="calculate()">Calculate</button>
+
+        <div class="output" id="operatorOutput"></div>
+    </div>
+
+
+    <div class="section">
+        <h2>3. Looping in JavaScript</h2>
+
+        <label>Enter Ending Number</label>
+        <input type="number" id="limit">
+
+        <button onclick="generateLoop()">Generate Numbers</button>
+
+        <div class="output" id="loopOutput"></div>
+    </div>
+
+
+    <div class="section">
+        <h2>4. Declare an Array</h2>
+
+        <label>Enter Subjects Separated by Comma</label>
+        <input type="text" id="subjects" placeholder="Java, Python, WAD, OS">
+
+        <button onclick="displayArray()">Display Array</button>
+
+        <div class="output" id="arrayOutput"></div>
+    </div>
+
+
+    <div class="section">
+        <h2>5. User Defined Function</h2>
+
+        <label>Enter Marks of Subject 1</label>
+        <input type="number" id="mark1">
+
+        <label>Enter Marks of Subject 2</label>
+        <input type="number" id="mark2">
+
+        <label>Enter Marks of Subject 3</label>
+        <input type="number" id="mark3">
+
+        <button onclick="showAverage()">Calculate Average</button>
+
+        <div class="output" id="functionOutput"></div>
+    </div>
+
+
+    <div class="section">
+        <h2>6. Built-in Functions</h2>
+
+        <label>Enter a String</label>
+        <input type="text" id="textInput">
+
+        <button onclick="showBuiltIn()">Apply Built-in Functions</button>
+
+        <div class="output" id="builtinOutput"></div>
+    </div>
+
+
+    <div class="section">
+        <h2>7. Dialog Boxes</h2>
+
+        <button onclick="showAlert()">Alert Box</button>
+        <button onclick="showConfirm()">Confirm Box</button>
+        <button onclick="showPrompt()">Prompt Box</button>
+
+        <div class="output" id="dialogOutput"></div>
+    </div>
+
+
+    <footer>
+        <p>GTU WAD Practical - JavaScript</p>
+    </footer>
+
+</div>
+
+
+<script>
+
+    function displayVariables() {
+        let name = document.getElementById("name").value;
+        let semester = document.getElementById("semester").value;
+
+        document.getElementById("variableOutput").innerHTML =
+            "<b>Name:</b> " + name + "<br>" +
+            "<b>Semester:</b> " + semester;
+    }
+
+
+    function calculate() {
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+
+        if (b === 0) {
+            document.getElementById("operatorOutput").innerHTML =
+                "Division by zero is not allowed.";
+            return;
+        }
+
+        let addition = a + b;
+        let subtraction = a - b;
+        let multiplication = a * b;
+        let division = a / b;
+        let remainder = a % b;
+
+        document.getElementById("operatorOutput").innerHTML =
+            "<b>Addition:</b> " + addition + "<br>" +
+            "<b>Subtraction:</b> " + subtraction + "<br>" +
+            "<b>Multiplication:</b> " + multiplication + "<br>" +
+            "<b>Division:</b> " + division + "<br>" +
+            "<b>Remainder:</b> " + remainder;
+    }
+
+
+    function generateLoop() {
+        let limit = Number(document.getElementById("limit").value);
+        let result = "";
+
+        if (limit <= 0) {
+            document.getElementById("loopOutput").innerHTML =
+                "Please enter a positive number.";
+            return;
+        }
+
+        for (let i = 1; i <= limit; i++) {
+            result += i + " ";
+        }
+
+        document.getElementById("loopOutput").innerHTML =
+            "<b>Numbers from 1 to " + limit + ":</b><br>" + result;
+    }
+
+
+    function displayArray() {
+        let input = document.getElementById("subjects").value;
+
+        let subjects = input.split(",");
+
+        let result = "<b>Array Elements:</b><ul>";
+
+        for (let i = 0; i < subjects.length; i++) {
+            result += "<li>" + subjects[i].trim() + "</li>";
+        }
+
+        result += "</ul>";
+
+        document.getElementById("arrayOutput").innerHTML = result;
+    }
+
+
+    function calculateAverage(a, b, c) {
+        return (a + b + c) / 3;
+    }
+
+
+    function showAverage() {
+        let a = Number(document.getElementById("mark1").value);
+        let b = Number(document.getElementById("mark2").value);
+        let c = Number(document.getElementById("mark3").value);
+
+        let average = calculateAverage(a, b, c);
+
+        document.getElementById("functionOutput").innerHTML =
+            "<b>Average:</b> " + average.toFixed(2);
+    }
+
+
+    function showBuiltIn() {
+        let text = document.getElementById("textInput").value;
+
+        let upper = text.toUpperCase();
+        let lower = text.toLowerCase();
+        let length = text.length;
+
+        document.getElementById("builtinOutput").innerHTML =
+            "<b>Original String:</b> " + text + "<br>" +
+            "<b>Uppercase:</b> " + upper + "<br>" +
+            "<b>Lowercase:</b> " + lower + "<br>" +
+            "<b>String Length:</b> " + length;
+    }
+
+
+    function showAlert() {
+        alert("Welcome to JavaScript Practical!");
+    }
+
+
+    function showConfirm() {
+        let result = confirm("Do you want to continue?");
+
+        if (result) {
+            document.getElementById("dialogOutput").innerHTML =
+                "<b>Result:</b> User clicked OK.";
+        } else {
+            document.getElementById("dialogOutput").innerHTML =
+                "<b>Result:</b> User clicked Cancel.";
+        }
+    }
+
+
+    function showPrompt() {
+        let name = prompt("Enter your name:");
+
+        if (name !== null && name !== "") {
+            document.getElementById("dialogOutput").innerHTML =
+                "<b>Result:</b> Hello, " + name + "!";
+        } else {
+            document.getElementById("dialogOutput").innerHTML =
+                "<b>Result:</b> No name entered.";
+        }
+    }
+
+</script>
+
+</body>
+</html>
+```
